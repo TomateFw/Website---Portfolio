@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <div class="cursor"></div>
+
+
+    <div class="page-header">
+        <div class="logo">
+            <a data-hs href="#">Hello World!</a>
+        </div>
+        <div class="nav-bar">
+            <a data-hs href="#">Home</a>
+            <a data-hs href="#">About</a>
+            <a data-hs href="#">Projects</a>
+            <a data-hs href="#">Contact</a>
+        </div>
+    </div>
+
+
+    <div class="hero-sec usn">
+        <div class="hero-sec-layout" aria-hidden="true">
+            <h1 data-hs class="herosec-text">
+                Développeur
+                <span class="hero-font">front-end</span> créant des sites web
+                <span class="hero-font">modernes</span> et
+                <span class="hero-font">épurés</span>.
+            </h1>
+            <div class="loader-wrapper">
+                <div class="loader-circle"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="second-sec"></div>
+
+
+
+    <script>
+        const cursor = document.querySelector(".cursor");
+        const hoverElements = document.querySelectorAll("[data-hs]");
+
+        document.addEventListener("mousemove", customCursor);
+
+        function customCursor(e) {
+            cursor.style.top = e.pageY + "px";
+            cursor.style.left = e.pageX + "px";
+        }
+        hoverElements.forEach(el => {
+            el.addEventListener("mouseenter", () => cursor.style.transform = "scale(3)");
+            el.addEventListener("mouseleave", () => cursor.style.transform = "scale(1)");
+        });
+    </script>
+
+</body>
+
+</html>
