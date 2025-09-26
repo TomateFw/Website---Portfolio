@@ -1,7 +1,12 @@
 :root {
     --background-black: rgb(10, 10, 10);
+    --secondary-black: rgb(20, 20, 20);
+    --third-black: rgb(25, 25, 25);
 
-    --white: #dbdbdb;
+
+
+    --white: #dadada;
+    --secondary-white: #e5e5e5;
 
     --gray: rgb(150, 150, 150);
     --gray-text: rgb(153, 153, 153);
@@ -10,7 +15,8 @@
     --border: rgba(255, 255, 255, 0.1);
 
     --dimension-loader: 350px;
-    --loader-fs: #38bdf8;
+
+    --dimension-circle: 10px;
 
     /* #8a8f98; */
 }
@@ -96,6 +102,48 @@ body {
     padding-bottom: 2rem;
 }
 
+.tooltip {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    border: solid 1px var(--border);
+    border-radius: 2.5rem;
+    padding: 0.5rem 0.9rem 0.5rem 0.9rem;
+}
+
+.circle {
+    width: var(--dimension-circle);
+    height: var(--dimension-circle);
+    background: var(--gray);
+    border-radius: 50%;
+    margin: 0.5rem;
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.tooltip-text {
+    font-family: 'Inter', sans-serif;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
 .herosec-text {
     max-width: 900px;
     margin: auto;
@@ -176,4 +224,121 @@ body {
             0 0 12px 4px rgba(255, 255, 255, 0.3),
             0 0 24px 8px rgba(255, 255, 255, 0.2);
     }
+}
+
+.bento-sec {
+    width: 100%;
+    height: 100vh;
+    color: var(--white);
+    border: solid 1px var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bento-text {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+
+    font-family: 'Inter', sans-serif;
+    color: var(--white);
+}
+
+.bento-sec-layout {
+    width: 100%;
+    height: 75%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+.bento-text h1 {
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+
+.bento-text h2 {
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    color: var(--sec);
+    font-weight: 200;
+}
+
+.bento-grid-sec {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 1.2rem;
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+.bento-grid {
+    position: relative;
+    border-radius: 0.85rem;
+    border: solid 1px var(--border);
+    background-color: var(--third-black);
+    width: 100%;
+    height: 100%;
+    padding: 2.5rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.bento-grid::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+            rgba(255, 255, 255, 0.1),
+            transparent 30%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.bento-grid:hover::before {
+    opacity: 1;
+}
+
+.first {
+    grid-column: span 2;
+    padding-top: 1rem;
+    /* background-color: aqua; */
+}
+
+.second {
+    /* background-color: coral; */
+}
+
+.third {
+    /* background-color: lightgreen; */
+    grid-row: span 2;
+}
+
+.fourth {
+    /* background-color: lightpink; */
+}
+
+.fifth {
+    /* background-color: lightblue; */
+}
+
+.sixth {
+    /* background-color: lightgray; */
+    grid-column: span 2;
 }
