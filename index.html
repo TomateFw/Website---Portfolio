@@ -35,28 +35,51 @@
     </div>
 
 
-    <div class="hero-sec usn">
+    <div class="hero-sec">
         <div class="hero-sec-layout" aria-hidden="true">
+            <div class="tooltip">
+                <div class="circle"></div>
+                <h1 class="tooltip-text">Actuellement disponible pour vos projets</h1>
+            </div>
             <h1 data-hs class="herosec-text">
                 Développeur
                 <span class="hero-font">front-end</span> créant des sites web
                 <span class="hero-font">modernes</span> et
                 <span class="hero-font">épurés</span>.
             </h1>
-            <div class="loader-wrapper">
+            <div data-hs class="loader-wrapper usn">
+                <!-- .usn pour enlever le blink animation du sélecteur -->
                 <div class="loader-circle"></div>
             </div>
         </div>
 
     </div>
 
-    <div class="second-sec"></div>
+    <div class="bento-sec">
+        <div class="bento-sec-layout">
+            <div data-hs class="bento-text">
+                <h1>Only design agency, you'll ever need</h1>
+                <h2>Our simple 3 step process designed to take all designs operations from your plate, we have worked
+                    whith 40+ clients</h2>
+            </div>
+            <div class="bento-grid-sec">
+                <div class="first bento-grid"></div>
+                <div class="second bento-grid"></div>
+                <div class="third bento-grid"></div>
+                <div class="fourth bento-grid"></div>
+                <div class="fifth bento-grid"></div>
+                <div class="sixth bento-grid"></div>
+            </div>
+        </div>
+    </div>
 
 
 
     <script>
         const cursor = document.querySelector(".cursor");
         const hoverElements = document.querySelectorAll("[data-hs]");
+        const bentoGrids = document.querySelectorAll(".bento-grid-sec");  // Sélectionne toutes les divs bento-grid
+
 
         document.addEventListener("mousemove", customCursor);
 
@@ -68,6 +91,27 @@
             el.addEventListener("mouseenter", () => cursor.style.transform = "scale(3)");
             el.addEventListener("mouseleave", () => cursor.style.transform = "scale(1)");
         });
+
+        bentoGrids.forEach(grid => {
+            grid.addEventListener("mouseenter", () => cursor.style.opacity = "0");
+            grid.addEventListener("mouseleave", () => cursor.style.opacity = "1");
+        });
+
+        // Effet de hover sur les grilles bento
+        const grids = Array.from(document.querySelectorAll(".bento-grid"));
+        const bentoContainer = document.querySelector(".bento-grid-sec");
+
+        bentoContainer.addEventListener("mousemove", (e) => {
+            for (const grid of grids) {
+                const rect = grid.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                grid.style.setProperty("--mouse-x", `${x}px`);
+                grid.style.setProperty("--mouse-y", `${y}px`);
+            }
+        });
+
     </script>
 
 </body>
